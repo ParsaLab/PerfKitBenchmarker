@@ -16,6 +16,7 @@ import logging
 import os
 
 from perfkitbenchmarker import import_util
+from perfkitbenchmarker import requirements
 
 # This unconditionally loads any modules in any provider
 # directory with the name 'flags'. It is expected that providers
@@ -51,6 +52,7 @@ def LoadProvider(provider_name):
   Args:
     provider_name: The name of the package whose modules should be loaded.
   """
+  requirements.CheckProviderRequirements(provider_name)
   provider_package_path = os.path.join(__path__[0], provider_name)
   try:
     # Iterating through this generator will load all modules in the provider

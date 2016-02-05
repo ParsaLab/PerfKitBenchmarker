@@ -74,6 +74,7 @@ from perfkitbenchmarker import flags
 from perfkitbenchmarker import linux_benchmarks
 from perfkitbenchmarker import log_util
 from perfkitbenchmarker import os_types
+from perfkitbenchmarker import requirements
 from perfkitbenchmarker import static_virtual_machine
 from perfkitbenchmarker import timing_util
 from perfkitbenchmarker import traces
@@ -588,6 +589,7 @@ def _GenerateBenchmarkDocumentation():
 
 
 def Main(argv=sys.argv):
+  requirements.CheckBasicRequirements()
   logging.basicConfig(level=logging.INFO)
 
   # TODO: Verify if there is other way of appending additional help
